@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            width: 70vw;
+            max-height: 90vh;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(to bottom, #FFFACD, #FBAED2);
+            
+        }
+
+        h2 {
+            text-align: center;
+            color: blue;
+        }
+
+        .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+textarea {
+    
+    resize: vertical;
+    min-height: 80px;
+}
+.gender-group, .lang-grp {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+
+.gender-group input,
+.lang-grp input {
+    margin: 0;
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+}
+
+.gender-group label,
+.lang-grp label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.declare {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.declare input {
+    width: 16px;
+    height: 16px;
+}
+
+.btn {
+    width: 90px;
+    background: red;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 9px;
+    cursor: pointer;
+    align-self: center;
+}
+.form-grp {
+    display: inline;
+    white-space: nowrap;
+    text-align: right;
+}
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Registration Form</h2>
+        <form id="registrationForm">
+            <div class="form-group">
+                <label>First Name
+                <input type="text" id="firstName"></label>
+                <span class="error" id="firstNameError"></span>
+            </div>
+            <div class="form-group">
+                <label>Last Name
+                <input type="text" id="lastName"></label>
+                <span class="error" id="lastNameError"></span>
+            </div>
+            <div class="form-group">
+                <label>Email
+                <input type="email" id="email"></label>
+                <span class="error" id="emailError"></span>
+            </div>
+            <div class="form-group">
+                <label>Password
+                <input type="password" id="password"></label>
+                <span class="error" id="passwordError"></span>
+            </div>
+            <div class="form-group">
+                <label>Re-enter Password
+                <input type="password" id="confirmPassword"></label>
+                <span class="error" id="confirmPasswordError"></span>
+            </div>
+            <div class="form-group">
+                <label>Gender
+                <div class="gender-group">
+                    <input type="radio" name="gender" value="Male"> Male
+                    <input type="radio" name="gender" value="Female"> Female
+                </label></div>
+            </div>
+            <div class="form-group">
+                <label>Age
+                <input type="number" id="age"></label>
+                <span class="error" id="ageError"></span>
+            </div>
+            <div class="form-group">
+                <label>Phone Number
+                <input type="tel" id="phone"></label>
+                <span class="error" id="phoneError"></span>
+            </div>
+            <div class="form-group">
+                <label>Address
+                <textarea id="address"></textarea></label>
+                <span class="error" id="addressError"></span>
+            </div>
+            <div class="form-group">
+                <label>State
+                <input type="text" id="state"></label>
+                <span class="error" id="stateError"></span>
+            </div>
+            <div class="form-group">
+                <label>Country
+                <select id="country">
+                    <option value="">Choose your country</option>
+                    <option value="India">India</option>
+                    <option value="USA">USA</option>
+                    <option value="UK">UK</option>
+                </select></label>
+                <span class="error" id="countryError"></span>
+            </div>
+            
+            <div class="form-group">
+
+
+                <div class="form-group">
+                    <label>Preferred Language</label>
+                    <div class="lang-grp">
+                        <input type="checkbox" name="lang" value="English"> English
+                        <input type="checkbox" name="lang" value="Hindi"> Hindi
+                        <input type="checkbox" name="lang" value="Kannada"> Kannada
+                        <input type="checkbox" name="lang" value="Telugu"> Telugu
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <div class="declare">
+                        <input type="checkbox" id="agree">
+                        <label for="agree">I hereby declare that the above information is true to my knowledge.
+
+                        </label>
+                    </div>
+                    
+                </div>
+                <div class="form-grp">Log in to <a href="https://www.ethnus.com">Ethnus </a>Website
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn">REGISTER</button>
+                </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            let isValid = true;
+
+            function showError(id, message) {
+                document.getElementById(id).innerText = message;
+                isValid = false;
+            }
+
+            function clearErrors() {
+                document.querySelectorAll('.error').forEach(e => e.innerText = '');
+            }
+
+            clearErrors();
+
+            if (document.getElementById('firstName').value.trim() === '') showError('firstNameError', 'POOR');
+            if (document.getElementById('lastName').value.trim() === '') showError('lastNameError', 'POOR');
+            if (document.getElementById('email').value.trim() === '') showError('emailError', 'POOR');
+            if (document.getElementById('password').value.length < 6) showError('passwordError', 'POOR');
+            if (document.getElementById('confirmPassword').value !== document.getElementById('password').value)
+                showError('confirmPasswordError', 'POOR or MISMATCH');
+            if (document.getElementById('age').value.trim() === '') showError('ageError', 'POOR');
+            if (document.getElementById('phone').value.trim() === '') showError('phoneError', 'POOR');
+            if (document.getElementById('address').value.trim() === '') showError('addressError', 'POOR');
+            if (document.getElementById('state').value.trim() === '') showError('stateError', 'POOR');
+            if (document.getElementById('country').value === '') showError('countryError', 'POOR');
+
+            if (isValid) alert('Form submitted successfully!');
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplication & Division</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+            color: black;
+        }
+        input, button {
+            padding: 10px;
+            font-size: 16px;
+            margin: 5px;
+            border-radius: 5px;
+            border: none;
+            background-color: rgb(222, 238, 243);
+            color: black;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Multiplication & Division Calculator</h2>
+    <label>Enter first number:
+    <input type="number" id="num1" placeholder="Enter first number"></label>
+    <br><label>Enter first number:
+    <input type="number" id="num2" placeholder="Enter second number"></label>
+    <br>
+    <button onclick="calculate('multiply')">Multiply</button>
+    <button onclick="calculate('divide')">Divide</button>
+    <p id="result"></p>
+
+    <script>
+        function calculate(operation) {
+            const num1 = parseFloat(document.getElementById("num1").value);
+            const num2 = parseFloat(document.getElementById("num2").value);
+            let output = "";
+
+            if (isNaN(num1) || isNaN(num2)) {
+                output = "Please enter valid numbers!";
+            } else {
+                if (operation === 'multiply') {
+                    output = `The Result is:
+                     
+                    ${num1} × ${num2} = ${num1 * num2}`;
+                } else if (operation === 'divide') {
+                    if (num2 !== 0) {
+                        output = `The Result is:
+                         
+                         ${num1} ÷ ${num2} = ${num1 / num2}`;
+                    } else {
+                        output = "Division by zero is not allowed!";
+                    }
+                }
+            }
+            
+            document.getElementById("result").innerText = output;
+        }
+    </script>
+
+</body>
+</html>
